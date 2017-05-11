@@ -33,10 +33,11 @@ MOVES = {
 
 class Cursor
 
-  attr_accessor :cursor_pos, :board
+  attr_accessor :cursor_pos, :board, :selected_pos
 
   def initialize(cursor_pos, board)
     @cursor_pos = cursor_pos
+    @selected_pos = nil
     @board = board
   end
 
@@ -79,6 +80,11 @@ class Cursor
   def handle_key(key)
     case key
     when :return
+      if selected_pos.nil? 
+        @selected_pos = cursor_pos
+      else 
+        @selected_pos = nil 
+      end 
       cursor_pos
     when :space
       cursor_pos

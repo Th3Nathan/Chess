@@ -61,7 +61,6 @@ class Board
 
   protected
   def make_starting_grid
-    #byebug
     @grid = []
     @grid << piece_row(0, :black)
     @grid << pawn_row(1, :black)

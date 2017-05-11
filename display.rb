@@ -27,15 +27,23 @@ class Display
   def get_color(row, col)
 
     color = :black
-    color = :white if @board[[row, col]].color == :white
+    color = :green if @board[[row, col]].color == :white
 
     if @cursor.cursor_pos == [row, col]
-      {background: :yellow, color: color}
+      if @cursor.selected_pos.nil? 
+        {background: :yellow, color: color}
+      else 
+        {background: :light_green, color: color}
+      end 
+    elsif !@cursor.selected_pos.nil? && @cursor.selected_pos == [row, col]
+      {background: :cyan, color: :black}
     elsif (row + col).odd?
       {background: :light_blue, color: color}
     else
       {background: :red, color: color}
     end
+    
+
   end
 
   def render()
